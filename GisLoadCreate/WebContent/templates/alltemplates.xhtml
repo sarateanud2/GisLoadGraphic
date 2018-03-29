@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="myCss.css" />
+</h:head>
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/templates/header.xhtml" />
+	</ui:insert>
+	
+	<ui:insert name="content">
+		<div>
+			<h:panelGroup id="content" layout="block">
+				<ui:include src="/templates/#{modelNavBar.page}.xhtml" />
+			</h:panelGroup>
+		</div>
+	</ui:insert>
+
+</h:body>
+</html>

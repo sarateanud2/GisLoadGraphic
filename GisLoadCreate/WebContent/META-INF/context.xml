@@ -1,0 +1,17 @@
+<Context>
+
+	<Resource name="jdbc/gisdatapg" auth="Container"
+          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+          url="jdbc:postgresql://localhost:5432/postgres"
+          username="postgres" password="sys" maxActive="20" maxIdle="10"
+			maxWait="-1"/>
+			
+	<Resource name="jdbc/gisdataoracle" auth="Container" global="jdbc/gisdataoracle"
+          type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+          url="jdbc:oracle:thin:@//192.168.1.176:1521/gisdata"
+          username="gisdata" password="gisdata" maxActive="20" maxIdle="10"
+			maxWait="-1"/> 
+			
+			
+
+</Context>

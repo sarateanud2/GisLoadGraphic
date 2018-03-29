@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="myCss.css" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<h:form id="form">
+	    <h3>CadZone:</h3>
+	    <p>Selectati cadzona sau cadzonele pentru incarcare:</p>
+		    <p:selectManyCheckbox id="grid" value="#{cadzoneDataBase.selectedcadzone}" layout="responsive" columns="13">
+		        <f:selectItems value="#{cadzoneDataBase.cadZoneList}" var="cadzone" itemLabel="#{cadzone}" itemValue="#{cadzone}" />
+		    </p:selectManyCheckbox>
+		    <br />
+		    <p:commandLink actionListener="#{cadzoneDataBase.executUpload()}"  value="Start"  id="ajaxUploadCadZone" styleClass="btn" update=":form:cadZoneUploadDetail" onclick="PF('dlgCadzoneUpload').show()" disabled="#{cadzoneDataBase.disabled}" />
+	   								
+		    
+		    <p:dialog id="cadzoneDialog" modal="true" widgetVar="dlgCadzoneUpload" closable="true" dynamic="true" resizable="false" header="Incarcare CadZone" >
+		
+				<p:outputPanel id="cadZoneUploadDetail" style="text-align:center;">
+					<p:panelGrid>
+						 	<p:row styleClass="content2">
+						     	<p:column>
+						      		<h:outputText value="Se executa" />
+						      	</p:column>
+						    </p:row>
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>

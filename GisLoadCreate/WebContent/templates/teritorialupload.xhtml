@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="myCss.css" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<h:form id="formTerit">
+		<p:growl id="msgTeritorial" />
+	    <h3>Zone Teritoriale:</h3>
+	    <p>Selectati oficiu teritorial sau oficiile teritoriale pentru incarcare:</p>
+	    	<p:selectBooleanCheckbox id="g2" value="#{teritorialModel.selectedAllCadzone}">
+	    		<p:ajax update=":formTerit:oficiiTeritoriale ,msgTeritorial" listener="#{teritorialModel.addMessageAndSetAllTeritoriiSelected}"/>
+	    	</p:selectBooleanCheckbox>
+		    <br />
+		    
+		    <p:selectManyCheckbox styleClass="checkbox"  id="oficiiTeritoriale" value="#{teritorialModel.selecteTerenuri}" layout="responsive" columns="5" onchange="toggle(this)" >
+		        <f:selectItems value="#{teritorialModel.terenuriListAll}" id="checkOU"   var="terit" itemLabel="#{terit}" itemValue="#{terit}" />
+		        
+		    </p:selectManyCheckbox>
+		    <br />
+		    
+		    <p:commandLink  value="Start" actionListener="#{teritorialModel.executUpload()}"  id="ajaxEditCopiiSapp" styleClass="btn btn-warning" update=":formTerit:editCopillSappDetail" onclick="PF('dlgEditCopii').show()" disabled="#{cadzoneDataBase.disabled}" />
+	   								
+		    
+		    <p:dialog id="editDialog" modal="true" widgetVar="dlgEditCopii" closable="true" dynamic="true" resizable="false" header="Edit copil" >
+		
+				<p:outputPanel id="editCopillSappDetail" style="text-align:center;">
+					<p:panelGrid>
+						 	<p:row styleClass="content2">
+						     	<p:column>
+						      		<h:outputText value="Se executa" />
+						      	</p:column>
+						    </p:row>
+						    
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			
+			
+			<p:selectCheckboxMenu label="oficii" id="oficiiTeritoriale2" value="#{teritorialModel.selecteTerenuri}" multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+				<f:selectItems value="#{teritorialModel.terenuriListAll}" />
+			</p:selectCheckboxMenu>
+		    
+		</h:form>
+	</ui:composition>
+
+</h:body>
+</html>

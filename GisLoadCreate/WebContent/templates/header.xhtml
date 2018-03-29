@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="myCss.css" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<h:form>
+		<ul>
+		  <li><h:commandLink action="#{modelNavBar.setPage('main')}" styleClass="linkStyle" value="Home" update=":content"></h:commandLink></li>
+		  <li><h:commandLink action="#{modelNavBar.setPage('errorzone')}" styleClass="linkStyle" value="Error CadZone" update=":content"></h:commandLink></li>
+		  <li class="dropdown">
+		    <a href="javascript:void(0)" class="dropbtn linkStyle">Upload</a>
+		    <div class="dropdown-content">
+		      <h:commandLink action="#{modelNavBar.setPage('republicaupload')}" styleClass="linkStyle" value="Republic Moldova" update=":content" />
+		      <h:commandLink action="#{modelNavBar.setPage('teritorialupload')}" styleClass="linkStyle" value="Teriotorial" update=":content" />
+		      <h:commandLink action="#{modelNavBar.setPage('cadzoneupload')}" styleClass="linkStyle" value="Cad Zone" update="content" />
+		    </div>
+		  </li>
+		  <li><h:commandLink action="#{modelNavBar.setPage('settings')}" styleClass="linkStyle" value="Setari" update=":content"></h:commandLink></li>
+		</ul>
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>
