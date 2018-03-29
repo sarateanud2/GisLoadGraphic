@@ -13,7 +13,7 @@
 		<h:form id="formTerit">
 		<p:growl id="msgTeritorial" />
 	    <h3>Zone Teritoriale:</h3>
-	    <p>Selectati oficiu teritorial sau oficiile teritoriale pentru incarcare:</p>
+	    <p>Selectati oficiu teritorial sau oficiile teritoriale pentru incarcare:      </p>
 	    	<p:selectBooleanCheckbox id="g2" value="#{teritorialModel.selectedAllCadzone}">
 	    		<p:ajax update=":formTerit:oficiiTeritoriale ,msgTeritorial" listener="#{teritorialModel.addMessageAndSetAllTeritoriiSelected}"/>
 	    	</p:selectBooleanCheckbox>
