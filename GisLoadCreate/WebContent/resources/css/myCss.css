@@ -1,18 +1,17 @@
 @charset "UTF-8";
 
-ul {
+.ul-header {
     list-style-type: none!important;
     margin: 0!important;
     padding: 0!important;
     overflow: hidden!important;
     background-color: #333!important;
 }
-
-li {
+.li-header {
     float: left;
 }
 
-li a, .dropbtn {
+.li-header a, .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
@@ -20,12 +19,16 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+.li-header a:hover, .dropdown-head:hover .dropbtn {
     background-color: red;
 }
 
-li.dropdown {
+li.dropdown-head {
     display: inline-block;
+}
+
+.li-teritorial {
+	display: inline;
 }
 
 .dropdown-content {
@@ -47,7 +50,7 @@ li.dropdown {
 
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-.dropdown:hover .dropdown-content {
+.dropdown-head:hover .dropdown-content {
     display: block;
 }
 
@@ -109,4 +112,15 @@ li.dropdown {
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+.ui-selectcheckboxmenu-multiple-container {
+    clear: left!important;
+    cursor: pointer!important;
+    list-style-type: none!important;
+    margin: 0!important;
+    display: list-item!important;
+    min-height: 24px!important;
+    overflow: hidden!important;
+    min-width: 500px!important;
 }

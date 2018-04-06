@@ -18,8 +18,9 @@ public class DisabledStatus {
 		boolean isDesabled = false;
 		try {
 			connection = Database.getConnectionPG();
-			String sql = "SELECT disabled FROM gisadm.disabled_status where id = 1";
+			String sql = "SELECT disabled FROM gisadm.disabled_status where id = ?";
 			stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				isDesabled = rs.getBoolean("disabled");
@@ -44,10 +45,10 @@ public class DisabledStatus {
 			connection = Database.getConnectionPG();
 			String sql = "update gisadm.disabled_status set disabled = true";
 			stmt = connection.prepareStatement(sql);
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			
 		} catch(SQLException ex) {
-			System.out.println(ex.getCause());
+			ex.printStackTrace();
         } finally {
         	try {
 				Database.closeConnections(stmt, rs, connection);
@@ -64,7 +65,7 @@ public class DisabledStatus {
 			connection = Database.getConnectionPG();
 			String sql = "update gisadm.disabled_status set disabled = false";
 			stmt = connection.prepareStatement(sql);
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			
 		} catch(SQLException ex) {
 			System.out.println(ex.getCause());

@@ -107,41 +107,29 @@ public class CadzoneDataBase implements Serializable{
 		if(!isDisabled) {
 			DisabledStatus.disableAll();
 			isDisabled = true;
-			isAcctive = true;
-			
 			statusMessage = "Upload Start";
-			System.out.println("start");
-			ExecutorService executor = null;
-			if(selectedcadzone.length > 0 && selectedcadzone.length < 4) {
-				executor = Executors.newFixedThreadPool(selectedcadzone.length);
-			} else {
-				executor = Executors.newFixedThreadPool(4);
-			}
-			for(String cadzone : selectedcadzone) {
-//				System.out.println(cadzone);
-				if(isAcctive) {
-					Upload upload = new Upload(cadzone);
-					executor.execute(upload);
-				} else {
-					break;
-				}
-			}
-
-	        	executor.shutdown();
-	            while (!executor.isTerminated()) {
-	            }
-
-	    	 
+			System.out.println("Start");
+			
+			Upload upload = new Upload();
+			upload.executUploadProgramm(selectedcadzone);
+	    	
 	    	System.out.println("end IN !!!!!!!!!!!!!!!!!!!!");
 	    	DisabledStatus.enableAll();
+	    	this.selectedcadzone = null;
 	    	isDisabled = false;
-	    	isAcctive = true;	    	
+	    	isAcctive = true;
+	    		    	
 		}
 		
 	}
 	
 	public void cancelThreadExecution() {
 		this.isAcctive = false;
+	}
+	
+	public void clearSelectedCadzone() {
+		this.selectedcadzone = null;
+		
 	}
 	
 }

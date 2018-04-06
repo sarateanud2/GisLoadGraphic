@@ -2,7 +2,9 @@ package com.cadastre.execution;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.concurrent.TimeUnit;
 
 public class ExecutComandLine {
@@ -22,7 +24,7 @@ public class ExecutComandLine {
 	                public void run() {
 	                    try {
 	                        while (input.readLine() != null) {
-	                            System.out.println(input.readLine() + " Error");
+	                            System.out.println(input.readLine());
 	                        }
 	                    } catch (IOException ex) {
 //	                        logger.error(ex.getMessage() + ";" + Arrays.toString(ex.getStackTrace()));
@@ -53,16 +55,16 @@ public class ExecutComandLine {
 	                    try {
 	                        Thread.sleep(500);
 	                    } catch (InterruptedException ex) {
-//	                        logger.error(ex.getMessage() + ";" + Arrays.toString(ex.getStackTrace()));
+
 	                    }
 	                }
 	            }
 	            return i;
 
 	        } catch (Exception ex) {
-//	            logger.error(ex.getMessage() + ";" + Arrays.toString(ex.getStackTrace()));
+
 	        }
 	        return result;
-    }
+}
 
 }

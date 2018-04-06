@@ -65,17 +65,6 @@ public class TeritorialModel implements Serializable{
 		this.selecteTerenuri = selecteTerenuri;
 	}
 	
-	public void addMessageAndSetAllTeritoriiSelected() {
-		if(isSelectedAllCadzone) {
-			this.selecteTerenuri = terenuriList.toArray(new String[0]);
-		} else {
-			this.selecteTerenuri = null;
-		}
-		
-		String message = isSelectedAllCadzone ? "Sunt selectate toate" : "Deselectate toate";
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
-	}
-	
 	public String getStatusMessage() {
 		return statusMessage;
 	}
@@ -170,45 +159,20 @@ public class TeritorialModel implements Serializable{
 			isDisabled = true;
 			statusMessage = "Upload Start";
 			System.out.println("Start");
-			ExecutorService executor = null;
-			List<String> allCadzone = getAllCadZonesFromAllZoneTeritoriale();
-			int allCadZoneSize = allCadzone.size();
-			if(allCadZoneSize > 0 && allCadZoneSize < 4) {
-				executor = Executors.newFixedThreadPool(allCadZoneSize);
-			} else {
-				executor = Executors.newFixedThreadPool(4);
-			}
 			
-			for(String cadzone : allCadzone) {
-				if(isAcctive) {
-					Upload upload = new Upload(cadzone);
-					executor.submit(upload);
-				} else {
-					break;
-				}
-			}
-	    	
-	    	try {
-	        	executor.shutdown();
-	        	executor.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
-	        		        	
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			Upload upload = new Upload();
+			upload.executUploadProgramm(selecteTerenuri);
 	    	
 	    	System.out.println("end IN !!!!!!!!!!!!!!!!!!!!");
 	    	DisabledStatus.enableAll();
+	    	this.selecteTerenuri = null;
 	    	isDisabled = false;
 	    	isAcctive = true;
 	    		    	
 		}
+		
+		
 	}
-	
-	public void stopThreadExecutiion() {
-		this.isAcctive = false;
-	}
-	
-
 	
 
 }

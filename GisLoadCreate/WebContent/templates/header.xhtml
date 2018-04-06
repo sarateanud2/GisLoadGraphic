@@ -11,10 +11,10 @@
 <h:body>
 	<ui:composition>
 		<h:form>
-		<ul>
-		  <li><h:commandLink action="#{modelNavBar.setPage('main')}" styleClass="linkStyle" value="Home" update=":content"></h:commandLink></li>
-		  <li><h:commandLink action="#{modelNavBar.setPage('errorzone')}" styleClass="linkStyle" value="Error CadZone" update=":content"></h:commandLink></li>
-		  <li class="dropdown">
+		<ul class="ul-header">
+		  <li class="li-header"><h:commandLink action="#{modelNavBar.setPage('main')}" styleClass="linkStyle" value="Home" update=":content"></h:commandLink></li>
+		  <li class="li-header"><h:commandLink action="#{modelNavBar.setPage('errorzone')}" styleClass="linkStyle" value="Error CadZone" update=":content"></h:commandLink></li>
+		  <li class="dropdown-head">
 		    <a href="javascript:void(0)" class="dropbtn linkStyle">Upload</a>
 		    <div class="dropdown-content">
 		      <h:commandLink action="#{modelNavBar.setPage('republicaupload')}" styleClass="linkStyle" value="Republic Moldova" update=":content" />
@@ -22,7 +22,7 @@
 		      <h:commandLink action="#{modelNavBar.setPage('cadzoneupload')}" styleClass="linkStyle" value="Cad Zone" update="content" />
 		    </div>
 		  </li>
-		  <li><h:commandLink action="#{modelNavBar.setPage('settings')}" styleClass="linkStyle" value="Setari" update=":content"></h:commandLink></li>
+		  <li class="li-header"><h:commandLink action="#{modelNavBar.setPage('settings')}" styleClass="linkStyle" value="Setari" update=":content"></h:commandLink></li>
 		</ul>
 		</h:form>
 	</ui:composition>
